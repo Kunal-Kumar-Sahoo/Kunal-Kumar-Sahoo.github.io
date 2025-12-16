@@ -1,0 +1,355 @@
+const portfolioData = {
+    "profile": {
+        "name": "Kunal Kumar Sahoo",
+        "subtitles": [
+            "Hello, World! I am Kunal 👨‍💻",
+            "AI Researcher & Ph.D. Student"
+        ],
+        "about": "I am a Ph.D. candidate at the School of Artificial Intelligence, Indian Institute of Technology Delhi working on embodied intelligence systems and how they interact with the physical world. My research centres on building compact, interpretable models and control policies that operate reliably on edge and robotic platforms. I have contributed to applied research in reinforcement learning for manipulation and traffic control, energy- and latency-aware model scheduling for heterogeneous devices, and explainable deep learning for speech tasks. My work has produced peer-reviewed contributions and patent applications, and I regularly teach workshops and give invited talks to share practical and methodological advances with students and practitioners.",
+        "areas_of_interest": [
+            "Physical AI",
+            "Spatio-Temporal Reasoning",
+            "Robot Planning",
+            "Foundation Models",
+            "Generative AI",
+            "Reinforcement Learning",
+            "Representation Learning",
+            "Computer Vision",
+            "Edge AI",
+            "Speech Processing"
+        ],
+        "image": "img/aiz258459_kunalkumarsahoo.png"
+    },
+    "education": [
+        {
+            "degree": "Ph.D. in Artificial Intelligence",
+            "institution": "Indian Institute of Technology Delhi",
+            "period": "2025 — Present",
+            "status": "Ongoing",
+            "coursework": "Mathematical Foundations for MINDS, Reinforcement Learning, Embodied Intelligence"
+        },
+        {
+            "degree": "B.Tech. in Computer Engineering",
+            "institution": "Pandit Deendayal Energy University, Gandhinagar",
+            "period": "2021 — 2025",
+            "grade": "CGPA: 9.70/10",
+            "coursework": "Data Structures & Algorithms, Databases, Computer Networks, Automata Theory, Compiler Design, Image Processing, Computer Vision, Big Data Analytics, Artificial Intelligence, Machine Learning, Robotics, Object-Oriented Programming, Software Engineering, Design Patterns"
+        },
+        {
+            "degree": "Higher Secondary Education",
+            "institution": "Kendriya Vidyalaya No. 1, Gandhinagar",
+            "period": "2021",
+            "grade": "94.8%",
+            "coursework": "Physics, Mathematics, Chemistry, Computer Science, English"
+        },
+        {
+            "degree": "Secondary Education",
+            "institution": "Kendriya Vidyalaya No. 1, Gandhinagar",
+            "period": "2019",
+            "grade": "94.6%",
+            "coursework": "Mathematics, Science, Social Sciences, English, Sanskrit"
+        }
+    ],
+    "experience": {
+        "research": [
+            {
+                "title": "Intelligent Robotic Teammate (IRT) Lab — IIT Delhi",
+                "advisors": [
+                    { "name": "Prof. Souvik Chakraborty", "link": "https://www.csccm.in/our-team" },
+                    { "name": "Prof. Rohan Paul", "link": "https://www.cse.iitd.ac.in/~rohanpaul/" }
+                ],
+                "period": "Jul 2025 — Present",
+                "work": [
+                    "Investigating state-of-the-art Vision-Language-Action (VLA) models to benchmark their baseline reasoning and planning capabilities.",
+                    "Grounding foundation models with physical principles to generate dynamically feasible trajectories for real-world robotic manipulation.",
+                    "Engineering novel methodologies to enhance spatio-temporal reasoning, focusing on multi-hop logic over past observations and real-time semantic understanding.",
+                    "Implementing and validating algorithms on diverse robotic platforms, including the Franka Emika Panda Arm. Hello Stretch-3, and SO-101."
+                ]
+            },
+            {
+                "title": "DREAM:Lab (Computational and Data Sciences) — IISc Bangalore",
+                "advisors": [
+                    { "name": "Prof. Yogesh Simmhan", "link": "https://cds.iisc.ac.in/faculty/simmhan/" }
+                ],
+                "period": "Jan 2025 — Jun 2025",
+                "work": [
+                    "Profiled DNN workloads across heterogeneous accelerators to derive time & energy rooflines and identify bottlenecks for edge deployment.",
+                    "Designed energy-aware model scheduling strategies and lightweight runtime policies to trade off latency, accuracy and power on resource-limited devices.",
+                    "Built measurement pipelines (benchmark harnesses, power telemetry, micro-benchmarks) and performed controlled experiments on representative CV and speech models.",
+                    "Outcome: Empirical roofline analyses, scheduling prototype, and poster presented at an MLSys workshop."
+                ]
+            },
+            {
+                "title": "Robotics Lab — IIT Gandhinagar",
+                "advisors": [
+                    { "name": "Prof. Harish P. M.", "link": "https://iitgn.ac.in/faculty/me/6-harish" }
+                ],
+                "period": "Aug 2024 — Dec 2024",
+                "work": [
+                    "Researched deep reinforcement learning algorithms for dexterous manipulation tasks including grasping, in-hand rotation and contact-rich maneuvers.",
+                    "Developed curricula and reward-shaping schemes to stabilize training; applied domain randomization and dynamics perturbations to improve transfer.",
+                    "Integrated simulation policies with ROS pipelines and executed transfer runs on a low-cost robotic arm to validate real-world performance.",
+                    "Outcome: Stable training recipes, transfer evaluation reports, and codebase for reuse across manipulation tasks."
+                ]
+            },
+            {
+                "title": "VISTA Lab (RBCCPS) — IISc Bangalore",
+                "advisors": [
+                    { "name": "Prof. Punit Rathore", "link": "https://www.vistalabiisc.com/P_portfolio/" }
+                ],
+                "period": "May 2024 — Aug 2024",
+                "work": [
+                    "Formulated traffic-signal control as an RL problem on city-scale graphs; designed state representations and reward formulations focused on queue-length and travel time metrics.",
+                    "Implemented simulation pipelines using SUMO and Gym interfaces, trained multi-agent RL policies and analysed stability and generalization across intersections.",
+                    "Collaborated on deployment feasibility studies with industry partners (prototype controllers, latency constraints, evaluation metrics).",
+                    "Outcome: Experimental results demonstrating queue reduction, reproducible SUMO+RL setups, and technical documentation for follow-up work."
+                ]
+            },
+            {
+                "title": "Speech Lab (ATDC) — IIT Kharagpur",
+                "advisors": [
+                    { "name": "Prof. Shyamal Kumar Das Mandal", "link": "https://www.iitkgp.ac.in/department/AT/faculty/at-sdasmandal" }
+                ],
+                "period": "May 2023 — Jun 2023",
+                "work": [
+                    "Developed deep learning pipelines for L1 identification from L2 speech, including feature extraction, augmentations and classifier design.",
+                    "Explored attention-based interpretability methods to surface salient acoustic cues and improve model explainability for linguistically-relevant predictions.",
+                    "Preprocessed and curated speech datasets, conducted ablation studies, and evaluated cross-speaker generalization.",
+                    "Outcome: Conference presentation and an interpretable pipeline for L1 identification experiments."
+                ]
+            }
+        ],
+        "industry": [
+            {
+                "title": "AI Engineer — S.S.B. Digital",
+                "team": "R&D Team",
+                "period": "Oct 2024 — Apr 2025",
+                "description": "Built data-driven document processing and automation solutions that reduced manual effort in deployments."
+            },
+            {
+                "title": "AI Intern — S.S.B. Digital",
+                "team": "R&D Team",
+                "period": "Apr 2024 — Oct 2024",
+                "description": "Built data-driven document processing and automation solutions that reduced manual effort in deployments."
+            },
+            {
+                "title": "Computer Vision Intern — PhysioAI.Care",
+                "team": "Product & Research",
+                "period": "Dec 2023 — Feb 2024",
+                "description": "Optimized posture-detection pipelines and developed low-latency inference endpoints for telephysiotherapy."
+            },
+            {
+                "title": "R&D Intern — Jio Platforms Limited",
+                "team": "3D Computer Vision Team",
+                "period": "Jun 2023 — Aug 2023",
+                "description": "Implemented skinning & rigging prototypes for 3D animation pipelines used in metaverse features."
+            }
+        ]
+    },
+    "skills": {
+        "Programming_Languages": [
+            { "name": "Python" },
+            { "name": "C/C++" },
+            { "name": "Core Java" },
+            { "name": "Julia" },
+            { "name": "JavaScript" },
+            { "name": "Dart" }
+        ],
+        "Libraries_Frameworks": [
+            { "name": "PyTorch" },
+            { "name": "Keras" },
+            { "name": "FastAI" },
+            { "name": "LangChain" },
+            { "name": "LangGraph" },
+            { "name": "HuggingFace Transformers" },
+            { "name": "Optuna" },
+            { "name": "Stable Baselines 3" },
+            { "name": "Scikit-Learn" },
+            { "name": "OpenCV" },
+            { "name": "NLTK" },
+            { "name": "NumPy" },
+            { "name": "Pandas" },
+            { "name": "Matplotlib" },
+            { "name": "Flask" },
+            { "name": "Streamlit" }
+        ],
+        "Databases_Cloud": [
+            { "name": "MySQL" },
+            { "name": "PostgreSQL" },
+            { "name": "MongoDB" },
+            { "name": "Google Cloud Platform" },
+            { "name": "Amazon Web Services" }
+        ],
+        "Robotics_Platforms": [
+            { "name": "Franka Panda Emika Arm" },
+            { "name": "Hello Stretch 3" },
+            { "name": "SO101" },
+            { "name": "LEAP Hand" },
+            { "name": "OpenManipulator X" }
+        ],
+        "Simulators": [
+            { "name": "Farama Gymnasium" },
+            { "name": "PyBullet" },
+            { "name": "MuJoCo" },
+            { "name": "Robot Operating System" },
+            { "name": "SUMO" }
+        ]
+    },
+    "publications": [
+        {
+            "title": "Pagoda: An Energy and Time Roofline Study for DNN Workloads on Edge Accelerators",
+            "link": "https://arxiv.org/abs/2509.20205",
+            "type": "JOURNAL",
+            "category": "Journal",
+            "authors": "Prashanthi S. K., <u>Kunal Kumar Sahoo</u>, Amartya Ranjan Saikia, Pranav Gupta, Atharva Vinay Joshi, Priyanshu Pansari, Yogesh Simmhan",
+            "venue": "IEEE Transactions on Parallel and Distributed Systems (Under Review)"
+        },
+        {
+            "title": "Fulcrum: Optimizing Concurrent DNN Training and Inferencing on Edge Accelerators",
+            "link": "https://arxiv.org/abs/2509.20205",
+            "type": "JOURNAL",
+            "category": "Journal",
+            "authors": "Prashanthi S. K., Saisamarth Taluri, Amartya Ranjan Saikia, Pranav Gupta, <u>Kunal Kumar Sahoo</u>, Atharva Vinay Joshi, Lakshya Karwa, Kedar Dhule, Yogesh Simmhan",
+            "venue": "ACM Transactions on Embedded Computing Systems (Under Review)"
+        },
+        {
+            "title": "Time and Energy Rooflines for DNN Workloads",
+            "type": "POSTER",
+            "category": "Conference",
+            "authors": "Prashanthi S. K., <u>Kunal Kumar Sahoo</u>, Atharva Vinay Joshi, Yogesh Simmhan",
+            "venue": "MLSys Young Professional Symposium 2025"
+        },
+        {
+            "title": "Comparison of Kinematic and Kinetic Reward Functions for RL for Robot Grasping",
+            "link": "https://www.techrxiv.org/doi/full/10.36227/techrxiv.175951357.73956557/v2",
+            "type": "PREPRINT",
+            "category": "Preprint",
+            "authors": "<u>Kunal Kumar Sahoo</u>, Saniya Patwardhan, Harish P.M."
+        },
+        {
+            "title": "Explainable AI-Driven Deep Learning for Accurate L1 Identification from L2 Speech",
+            "link": "https://doi.org/10.1007/978-3-032-03729-9_3",
+            "type": "CONFERENCE",
+            "category": "Conference",
+            "authors": "<u>Kunal Kumar Sahoo</u>, Debolina Pramanik, Puja Bharati, Sabyasachi Chandra, Shyamal Kumar Das Mandal, Tanmay Bhowmik",
+            "venue": "International Symposium on Frontiers of Research in Speech and Music (FRSM) 2024"
+        },
+        {
+            "title": "Modular Device for Multi-Terrain Autonomous Driving for Unmanned Vehicles",
+            "type": "PRODUCT PATENT",
+            "category": "Patent",
+            "authors": "Shakti Mishra, Chintan Bhatt, Anuj T. Patel, Kishan Pipariya, <u>Kunal Kumar Sahoo</u>, Sarthak Mehta, Soham Vyas",
+            "id": "Application No.: 202321038021 (Published)"
+        },
+        {
+            "title": "IoT-Based Intelligent Posture Monitoring Systems",
+            "type": "DESIGN PATENT",
+            "category": "Patent",
+            "authors": "Tanish Patel, <u>Kunal Kumar Sahoo</u>, Kishan Pipariya, Debabrata Swain, Dev Parikh",
+            "id": "Application No.: 202321037990 (Published)"
+        }
+    ],
+    "talks": [
+        {
+            "title": "Graph Neural Networks: From Concepts to Applications \n — DevFest 2024, Surat",
+            "desc": "Lightning talk on fundamentals and applications of graph neural networks, with <a href=\"https://adityajethani.vercel.app/\">Aditya Jethani</a>",
+            "img": "media/devfest.jpeg",
+            "date": "Dec 2024"
+        },
+        {
+            "title": "Demystifying Machine Learning \n — Navrachna University",
+            "desc": "Hands-on workshop introducing ML fundamentals to students.",
+            "img": "media/nuv.jpg",
+            "date": "March 2024"
+        },
+        {
+            "title": "Machin-o-logy \n — Parul University",
+            "desc": "Deep learning workshop with practical labs for students and faculty.",
+            "img": "media/parul.jpg",
+            "date": "February 2024"
+        },
+        {
+            "title": "Advanced Python Programming Workshop \n — Pandit Deendayal Energy University",
+            "desc": "Hands-on workshop on advanced Python concepts conducted by ACM PDEU Student Chapter.",
+            "img": "media/app.jpg",
+            "date": "February 2024"
+        },
+        {
+            "title": "Unsupervised Learning Workshop \n — Pandit Deendayal Energy University",
+            "desc": "An introductory workshop on Unsupervised Learning conducted by Encode: The Computer Science Club of PDEU.",
+            "img": "media/encode_ml.jpg",
+            "date": "February 2024"
+        },
+        {
+            "title": "Arduino 101 \n — Pandit Deendayal Energy University",
+            "desc": "An introductory hands-on workshop conducted by Cretus: The Robotics and Automation Club of PDEU.",
+            "img": "media/arduino.jpg",
+            "date": "February 2024"
+        }
+    ],
+    "projects": [
+        {
+            "img": "media/ucb-fl.jpg",
+            "title": "UCB-FL",
+            "desc": "Learning-based client selection strategy for federated learning using UCB. Winner — SysML challenge.",
+            "tech": "Python, PyTorch, Pandas, Matplotlib"
+        },
+        {
+            "img": "media/Minor Project-1_page-0001.jpg",
+            "title": "RL for Manipulation Skills",
+            "desc": "Deep RL policies for dexterous manipulation including in-hand rotation and torque control tasks.",
+            "tech": "MuJoCo, PyTorch, Stable Baselines 3"
+        },
+        {
+            "img": "media/Summer Internship Poster Format 2024.pptx(1).png",
+            "title": "RL for Traffic Optimization",
+            "desc": "Applied RL to traffic-signal control and evaluated throughput improvements in simulation.",
+            "tech": "Gym, SUMO, PyTorch"
+        },
+        {
+            "img": "media/radionet.jpeg",
+            "title": "Radionet — RF Human Detection",
+            "desc": "RF-based presence detection using conv-nets for classification on edge devices.",
+            "tech": "EdgeML, PyTorch"
+        },
+        {
+            "img": "media/Poster format for Symposium.pptx.png",
+            "title": "RadarNet — Range-Azimuth Detection",
+            "desc": "Radar processing pipeline for 2D localization and object detection.",
+            "tech": "Signal Processing, PyTorch"
+        },
+        {
+            "img": "media/Copy of Copy of Final Autonomous Driving using CV.png",
+            "title": "3D Bounding Boxes on Dashboard Feed",
+            "desc": "Depth estimation fused with YOLO to compute 3D bounding boxes (KITTI).",
+            "tech": "YOLO, Depth Nets"
+        },
+        {
+            "img": "media/Copy of Poster - PTM.png",
+            "title": "IoT Based Intelligent Posture Monitor",
+            "desc": "IoT-based solution for real-time posture monitoring using computer vision and machine learning.",
+            "tech": "MediaPipe, OpenCV, Scikit-Learn, ZigBee"
+        },
+        {
+            "img": "media/swam.png",
+            "title": "Swarm Drone Formation",
+            "desc": "Swarming-inspired control algorithms for making geometrical formations by 3-5 drones.",
+            "tech": "ROS, Gazebo, C++, Python"
+        },
+        {
+            "img": "media/technoxian.png",
+            "title": "Micromouse robot",
+            "desc": "A compact, wheeled-robot to explore a given maze and learn to solve it. It uses ultrasonic sensors to perceive its environment and identify open paths and walls.",
+            "tech": "C++, Arduino Nano"
+        }
+    ],
+    "contact": {
+        "email": "kunal.kumar.sahoo@scai.iitd.ac.in",
+        "socials": [
+            { "name": "GitHub", "link": "https://github.com/Kunal-Kumar-Sahoo", "icon": "devicon-github-original" },
+            { "name": "LinkedIn", "link": "https://www.linkedin.com/in/kunal-kumar-sahoo/", "icon": "devicon-linkedin-plain" },
+            { "name": "X", "link": "https://x.com/KunalKSahoo", "icon": "devicon-twitter-original" },
+            { "name": "Blog", "link": "https://kunalkumarsahooai.hashnode.dev/", "icon": "devicon-devicon-plain" }
+        ]
+    }
+};
