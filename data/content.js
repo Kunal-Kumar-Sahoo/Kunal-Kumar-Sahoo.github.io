@@ -284,7 +284,7 @@ const portfolioData = {
             "title": "Arduino 101 \n — Pandit Deendayal Energy University",
             "desc": "An introductory hands-on workshop conducted by Cretus: The Robotics and Automation Club of PDEU.",
             "img": "media/arduino.jpg",
-            "date": "February 2024"
+            "date": "February 2023"
         }
     ],
     "projects": [
