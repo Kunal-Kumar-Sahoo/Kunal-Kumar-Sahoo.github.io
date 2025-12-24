@@ -124,7 +124,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p style="margin-top:5px; font-family:var(--font-mono);">${edu.period} • ${edu.grade || edu.status}</p>
                     <hr style="border:0; border-top:1px dashed var(--text-secondary); margin:20px 0; opacity:0.3;">
                     <h4 style="margin-bottom:10px;">Coursework</h4>
-                    <p style="color:var(--text-secondary); line-height:1.8;">${edu.coursework}</p>
+                    ${typeof edu.coursework === 'object' && edu.coursework !== null && !Array.isArray(edu.coursework)
+                        ? Object.entries(edu.coursework).map(([category, courses]) => `
+                            <div style="margin-bottom: 12px;">
+                                <h5 style="font-size: 0.95rem; color: var(--text-primary); margin-bottom: 4px; font-weight: 600;">${category}</h5>
+                                <p style="color:var(--text-secondary); line-height:1.6; font-size: 0.9rem; margin: 0;">${courses}</p>
+                            </div>
+                        `).join('')
+                        : `<p style="color:var(--text-secondary); line-height:1.8;">${edu.coursework}</p>`
+                    }
                 `;
                 modal.style.display = 'flex';
             });
