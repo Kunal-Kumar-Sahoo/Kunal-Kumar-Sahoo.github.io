@@ -207,7 +207,7 @@ const portfolioData = {
     "publications": [
         {
             "title": "Pagoda: An Energy and Time Roofline Study for DNN Workloads on Edge Accelerators",
-            "link": "https://arxiv.org/abs/2509.20205",
+            "link": "https://arxiv.org/abs/2509.20189",
             "type": "JOURNAL",
             "category": "Journal",
             "authors": "Prashanthi S. K., <u>Kunal Kumar Sahoo</u>, Amartya Ranjan Saikia, Pranav Gupta, Atharva Vinay Joshi, Priyanshu Pansari, Yogesh Simmhan",
