@@ -260,7 +260,7 @@ const portfolioData = {
         },
         {
             "title": "IoT-Based Intelligent Posture Monitoring Systems",
-            "type": "DESIGN PATENT",
+            "type": "PROCESS PATENT",
             "category": "Patent",
             "authors": "Tanish Patel, <u>Kunal Kumar Sahoo</u>, Kishan Pipariya, Debabrata Swain, Dev Parikh",
             "id": "Application No.: 202321037990 (Published)"
