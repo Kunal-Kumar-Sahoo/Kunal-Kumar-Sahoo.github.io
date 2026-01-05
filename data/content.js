@@ -236,6 +236,14 @@ const portfolioData = {
             "authors": "<u>Kunal Kumar Sahoo</u>, Saniya Patwardhan, Harish P.M."
         },
         {
+            "title": "ALIGN: An AI-Driven IoT Framework for Real-Time Sitting Posture Detection",
+            "link": "https://www.mdpi.com/1999-4893/19/1/48",
+            "type": "JOURNAL",
+            "category": "Journal",
+            "authors": "<u>Kunal Kumar Sahoo</u>, Tanish Patel, Debabrata Swain, Vassilis C. Gerogiannis, Andreas Kanavos, Davinder Paul Singh, Manish Kumar, Biswaranjan Acharya",
+            "venue": "Algorithms 2026, Special Issue Mathematical Modelling in Engineering and Human Behaviour"
+        },
+        {
             "title": "Explainable AI-Driven Deep Learning for Accurate L1 Identification from L2 Speech",
             "link": "https://doi.org/10.1007/978-3-032-03729-9_3",
             "type": "CONFERENCE",
