@@ -26,9 +26,11 @@ const portfolioData = {
             "institution": "Indian Institute of Technology Delhi",
             "period": "2025 — Present",
             "status": "Ongoing",
+            "grade": "CGPA: 9.067/10",
             "coursework": {
                 "Mathematics": "Mathematical Foundations for MINDS",
-                "Learning": "Reinforcement Learning"
+                "Learning": "Reinforcement Learning",
+                "Applications": "Principles of Autonomous Systems, Deep Generative Models"
             }
         },
         {
@@ -208,18 +210,18 @@ const portfolioData = {
         {
             "title": "Pagoda: An Energy and Time Roofline Study for DNN Workloads on Edge Accelerators",
             "link": "https://arxiv.org/abs/2509.20189",
-            "type": "JOURNAL",
+            "type": "CONFERENCE",
             "category": "Journal",
             "authors": "Prashanthi S. K., <u>Kunal Kumar Sahoo</u>, Amartya Ranjan Saikia, Pranav Gupta, Atharva Vinay Joshi, Priyanshu Pansari, Yogesh Simmhan",
-            "venue": "IEEE Transactions on Parallel and Distributed Systems (Under Review)"
+            "venue": "International Conference on Parallel Processing (Under Review)"
         },
         {
             "title": "Fulcrum: Optimizing Concurrent DNN Training and Inferencing on Edge Accelerators",
             "link": "https://arxiv.org/abs/2509.20205",
-            "type": "JOURNAL",
+            "type": "PREPRINT",
             "category": "Journal",
             "authors": "Prashanthi S. K., Saisamarth Taluri, Amartya Ranjan Saikia, Pranav Gupta, <u>Kunal Kumar Sahoo</u>, Atharva Vinay Joshi, Lakshya Karwa, Kedar Dhule, Yogesh Simmhan",
-            "venue": "ACM Transactions on Embedded Computing Systems (Under Review)"
+            // "venue": ""
         },
         {
             "title": "Time and Energy Rooflines for DNN Workloads",
@@ -258,13 +260,6 @@ const portfolioData = {
             "authors": "Shakti Mishra, Chintan Bhatt, Anuj T. Patel, Kishan Pipariya, <u>Kunal Kumar Sahoo</u>, Sarthak Mehta, Soham Vyas",
             "id": "Application No.: 202321038021 (Published)"
         },
-        {
-            "title": "IoT-Based Intelligent Posture Monitoring Systems",
-            "type": "PROCESS PATENT",
-            "category": "Patent",
-            "authors": "Tanish Patel, <u>Kunal Kumar Sahoo</u>, Kishan Pipariya, Debabrata Swain, Dev Parikh",
-            "id": "Application No.: 202321037990 (Published)"
-        }
     ],
     "talks": [
         {
@@ -305,6 +300,12 @@ const portfolioData = {
         }
     ],
     "projects": [
+        {
+            "img": "media/pi_wm.png",
+            "title": "Physically Consistent World Models for Robotics",
+            "desc": "Learning a goal-agnostic transition dynamics using world models and conditional flow matching.",
+            "tech": "Python, PyTorch, PyBullet"
+        },
         {
             "img": "media/ucb-fl.jpg",
             "title": "UCB-FL",
