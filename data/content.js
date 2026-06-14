@@ -218,10 +218,10 @@ const portfolioData = {
         {
             "title": "Fulcrum: Optimizing Concurrent DNN Training and Inferencing on Edge Accelerators",
             "link": "https://arxiv.org/abs/2509.20205",
-            "type": "PREPRINT",
+            "type": "Conference",
             "category": "Journal",
             "authors": "Prashanthi S. K., Saisamarth Taluri, Amartya Ranjan Saikia, Pranav Gupta, <u>Kunal Kumar Sahoo</u>, Atharva Vinay Joshi, Lakshya Karwa, Kedar Dhule, Yogesh Simmhan",
-            // "venue": ""
+            "venue": "ACM/IFIP International Middleware Conference (Under Review)"
         },
         {
             "title": "Time and Energy Rooflines for DNN Workloads",
