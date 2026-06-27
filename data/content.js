@@ -5,7 +5,7 @@ const portfolioData = {
             "Hello, World! I am Kunal 👨‍💻",
             "AI Researcher & Ph.D. Student"
         ],
-        "about": "I am a Ph.D. candidate at the School of Artificial Intelligence, Indian Institute of Technology Delhi working on embodied intelligence systems and how they interact with the physical world. My research centres on building compact, interpretable models and control policies that operate reliably on edge and robotic platforms. I have contributed to applied research in reinforcement learning for manipulation and traffic control, energy- and latency-aware model scheduling for heterogeneous devices, and explainable deep learning for speech tasks. My work has produced peer-reviewed contributions and patent applications, and I regularly teach workshops and give invited talks to share practical and methodological advances with students and practitioners.",
+        "about": "I am an IndiaAI Ph.D. fellow at the Yardi School of Artificial Intelligence, Indian Institute of Technology Delhi working on embodied intelligence systems and how they interact with the physical world. My research centres on building compact, interpretable models and control policies that operate reliably on edge and robotic platforms. I have contributed to applied research in reinforcement learning for manipulation and traffic control, energy- and latency-aware model scheduling for heterogeneous devices, and explainable deep learning for speech tasks. My work has produced peer-reviewed contributions and patent applications, and I regularly teach workshops and give invited talks to share practical and methodological advances with students and practitioners.",
         "areas_of_interest": [
             "Physical AI",
             "Spatio-Temporal Reasoning",
@@ -263,7 +263,7 @@ const portfolioData = {
     ],
     "talks": [
         {
-            "title": "Deep Learning Under The Hood \n - Systems for Machine Learning Workshop 2026, IISc Bangalore",
+            "title": "Deep Learning Under The Hood \n — Systems for Machine Learning Workshop 2026, IISc Bangalore",
             "desc": "Tutorial session on introduction to deep learning, deep learning as a systems problem, and systems optimizations for deep learning.",
             "img": "media/sysml.png",
             "date": "June 2026"
