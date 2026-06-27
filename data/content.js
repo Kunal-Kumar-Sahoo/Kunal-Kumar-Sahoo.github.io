@@ -211,15 +211,15 @@ const portfolioData = {
             "title": "Pagoda: An Energy and Time Roofline Study for DNN Workloads on Edge Accelerators",
             "link": "https://arxiv.org/abs/2509.20189",
             "type": "CONFERENCE",
-            "category": "Journal",
+            "category": "Conference",
             "authors": "Prashanthi S. K., <u>Kunal Kumar Sahoo</u>, Amartya Ranjan Saikia, Pranav Gupta, Atharva Vinay Joshi, Priyanshu Pansari, Yogesh Simmhan",
             "venue": "International Conference on Parallel Processing (Under Review)"
         },
         {
             "title": "Fulcrum: Optimizing Concurrent DNN Training and Inferencing on Edge Accelerators",
             "link": "https://arxiv.org/abs/2509.20205",
-            "type": "Conference",
-            "category": "Journal",
+            "type": "CONFERENCE",
+            "category": "Conference",
             "authors": "Prashanthi S. K., Saisamarth Taluri, Amartya Ranjan Saikia, Pranav Gupta, <u>Kunal Kumar Sahoo</u>, Atharva Vinay Joshi, Lakshya Karwa, Kedar Dhule, Yogesh Simmhan",
             "venue": "ACM/IFIP International Middleware Conference (Under Review)"
         },
@@ -263,10 +263,16 @@ const portfolioData = {
     ],
     "talks": [
         {
+            "title": "Deep Learning Under The Hood \n - Systems for Machine Learning Workshop 2026, IISc Bangalore",
+            "desc": "Tutorial session on introduction to deep learning, deep learning as a systems problem, and systems optimizations for deep learning.",
+            "img": "media/sysml.png",
+            "date": "June 2026"
+        },
+        {
             "title": "Graph Neural Networks: From Concepts to Applications \n — DevFest 2024, Surat",
             "desc": "Lightning talk on fundamentals and applications of graph neural networks, with <a href=\"https://adityajethani.vercel.app/\">Aditya Jethani</a>",
             "img": "media/devfest.jpeg",
-            "date": "Dec 2024"
+            "date": "December 2025"
         },
         {
             "title": "Demystifying Machine Learning \n — Navrachna University",
