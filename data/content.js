@@ -213,7 +213,7 @@ const portfolioData = {
             "type": "CONFERENCE",
             "category": "Conference",
             "authors": "Prashanthi S. K., <u>Kunal Kumar Sahoo</u>, Amartya Ranjan Saikia, Pranav Gupta, Atharva Vinay Joshi, Priyanshu Pansari, Yogesh Simmhan",
-            "venue": "International Conference on Parallel Processing (Under Review)"
+            "venue": "International Conference on Parallel Processing (ICPP) 2026"
         },
         {
             "title": "Fulcrum: Optimizing Concurrent DNN Training and Inferencing on Edge Accelerators",
