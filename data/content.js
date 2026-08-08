@@ -263,6 +263,12 @@ const portfolioData = {
     ],
     "talks": [
         {
+            "title": "ReflAct: World Grounded Decision Making in LLM Agents via Goal-State Reflection by Kim et al., 2025",
+            "desc": "A paper presentation session by AI Collective held at IIIT Delhi, where I tried to establish the connection between modern agentic systems and traditional AI decision-making problems.",
+            "img": "media/IMG_20260808_143059.jpg",
+            "date": "August 2026"
+        },
+        {
             "title": "Deep Learning Under The Hood \n — Systems for Machine Learning Workshop 2026, IISc Bangalore",
             "desc": "Tutorial session on introduction to deep learning, deep learning as a systems problem, and systems optimizations for deep learning.",
             "img": "media/sysml.png",
