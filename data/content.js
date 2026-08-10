@@ -263,8 +263,8 @@ const portfolioData = {
     ],
     "talks": [
         {
-            "title": "ReflAct: World Grounded Decision Making in LLM Agents via Goal-State Reflection by Kim et al., 2025",
-            "desc": "A paper presentation session by AI Collective held at IIIT Delhi, where I tried to establish the connection between modern agentic systems and traditional AI decision-making problems.",
+            "title": "Grounding in Agentic Systems \n - Paper Reading Club ft. AI Collective 2026, IIIT Delhi",
+            "desc": "ReflAct (Kim et al., 2025) improves LLM agents by grounding each action in the current state and remaining goal, rather than relying on free-form reasoning alone.",
             "img": "media/IMG_20260808_143059.jpg",
             "date": "August 2026"
         },
