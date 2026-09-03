@@ -1,0 +1,10 @@
+# Added by code-review-graph
+.code-review-graph/
+.DS_Store
+.mcp.json
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+img/.DS_Store
+resume.pdf
+.claude/

@@ -1,335 +1,293 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Theme Handling
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    const currentTheme = localStorage.getItem('theme');
-
-    if (currentTheme) {
-        document.body.classList.toggle('light-mode', currentTheme === 'light');
-    } else if (!prefersDarkScheme.matches) {
-        document.body.classList.add('light-mode');
+    if (typeof window.portfolioData === 'undefined') {
+        console.error('portfolioData is missing.');
+        return;
     }
+    const data = window.portfolioData;
 
-    themeToggleBtn.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        const theme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
-        localStorage.setItem('theme', theme);
-    });
+    // ── SVG icons keyed by area of interest ─────────────────────────────
+    const ICONS = {
+                'Physical AI': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="5.5" width="14" height="12.5" rx="3.5"/>
+            <line x1="5" y1="11.5" x2="3.5" y2="11.5"/>
+            <line x1="19" y1="11.5" x2="20.5" y2="11.5"/>
+            <circle cx="9.3" cy="11" r="1.3" fill="currentColor" stroke="none"/>
+            <circle cx="14.7" cy="11" r="1.3" fill="currentColor" stroke="none"/>
+            <line x1="9.5" y1="15" x2="14.5" y2="15"/>
+            <line x1="12" y1="3" x2="12" y2="5.5"/>
+            <circle cx="12" cy="2.6" r="1.1" fill="currentColor" stroke="none"/>
+        </svg>`,
 
-    // 2. Mobile Navigation
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
-    navMenu.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        }
-    })
+        'Spatio-Temporal Reasoning': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="8"/>
+            <line x1="12" y1="4" x2="12" y2="12"/>
+            <line x1="12" y1="12" x2="16" y2="14"/>
+            <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+        </svg>`,
 
-    // 3. Data Loading (Global Variable)
-    if (typeof portfolioData !== 'undefined') {
-        const data = portfolioData;
-        renderHero(data.profile);
-        renderEducation(data.education);
-        renderExperience(data.experience);
-        renderSkills(data.skills);
-        renderPublications(data.publications);
-        renderProjects(data.projects);
-        renderTalks(data.talks);
-        renderFooter(data.contact);
-    } else {
-        console.error('portfolioData is missing. Ensure content.js is loaded.');
-    }
+        'Robot Planning': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.5 5 C7.8 5.2 8.4 8.2 6.6 10 C5.9 10.7 5.9 13.3 6.6 14 C8.4 15.8 7.8 18.8 9.5 19"/>
+            <path d="M14.5 5 C16.2 5.2 15.6 8.2 17.4 10 C18.1 10.7 18.1 13.3 17.4 14 C15.6 15.8 16.2 18.8 14.5 19"/>
+            <path d="M12 9.2 C12.2 11 12.9 11.6 14.6 12 C12.9 12.4 12.2 13 12 14.8 C11.8 13 11.1 12.4 9.4 12 C11.1 11.6 11.8 11 12 9.2 Z" fill="currentColor" stroke="none"/>
+        </svg>`,
 
-    // 4. Render Functions
+        'World Models': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="8"/>
+            <path d="M4.8 9h14.4"/>
+            <path d="M4.8 15h14.4"/>
+            <path d="M12 4c2.1 2.2 3.2 5 3.2 8s-1.1 5.8-3.2 8"/>
+            <path d="M12 4c-2.1 2.2-3.2 5-3.2 8s1.1 5.8 3.2 8"/>
+        </svg>`,
 
-    function renderHero(profile) {
-        document.title = `${profile.name} | AI & Robotics`;
-        document.getElementById('hero-name').textContent = profile.name;
-        document.getElementById('hero-bio').textContent = profile.about;
-        document.getElementById('profile-image').src = profile.image;
+        'Reinforcement Learning': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="5" cy="12" r="3"/>
+            <rect x="15.5" y="8.7" width="6.5" height="6.6" rx="1.6"/>
+            <path d="M8.2 9.0 Q12 4.3 15.0 8.3"/>
+            <path d="M13.3 7.6 L15.0 8.3 L14.7 6.6"/>
+            <path d="M15.0 15.7 Q12 19.7 8.2 15.0"/>
+            <path d="M9.8 15.5 L8.2 15.0 L8.4 16.7"/>
+        </svg>`,
 
-        const typingText = document.getElementById('typing-text');
-        const subtitles = profile.subtitles;
-        let lineIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typeSpeed = 100;
+        'Generative Modeling': `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="19" x2="21" y2="19"/>
+            <line x1="4" y1="19" x2="4" y2="4"/>
+            <path d="M5 18.5 C7 18.3 7.2 16.5 8.2 13.5 C9.2 10.5 10.4 7 12.3 7 C14.1 7 15.2 10.2 16.1 13.2 C17 16.1 18.2 18.2 20 18.5"/>
+            <path d="M5 18.5 C7.5 18.4 9 17.2 10.2 15.2 C11.4 13.2 12.8 10.2 14.2 9.2 C15.7 8.2 17.3 9.3 18.3 11.5 C19.2 13.5 19.5 16.2 20 18.5" stroke-dasharray="2.2 2"/>
+            <circle cx="12.3" cy="7" r="0.9" fill="currentColor" stroke="none"/>
+        </svg>`,
+    };
+    const DEFAULT_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="7"/>
+        <circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"/>
+    </svg>`;
 
-        function type() {
-            const currentLine = subtitles[lineIndex];
-            if (isDeleting) {
-                typingText.textContent = currentLine.substring(0, charIndex - 1);
-                charIndex--;
-                typeSpeed = 50;
-            } else {
-                typingText.textContent = currentLine.substring(0, charIndex + 1);
-                charIndex++;
-                typeSpeed = 100;
-            }
-
-            if (!isDeleting && charIndex === currentLine.length) {
-                isDeleting = true;
-                typeSpeed = 2000;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                lineIndex = (lineIndex + 1) % subtitles.length;
-                typeSpeed = 500;
-            }
-
-            setTimeout(type, typeSpeed);
-        }
-        type();
-
-        const interestsContainer = document.getElementById('hero-interests');
-        profile.areas_of_interest.forEach(area => {
-            const chip = document.createElement('span');
-            chip.className = 'tech-chip';
-            chip.textContent = area;
-            interestsContainer.appendChild(chip);
+    // ── Render interests on every page ───────────────────────────────────
+    const interestsCt = document.getElementById('hero-interests');
+    if (interestsCt) {
+        data.profile.areas_of_interest.forEach(area => {
+            const thread = document.createElement('div');
+            thread.className = 'thread';
+            thread.innerHTML = `<span class="tile">${ICONS[area] || DEFAULT_ICON}</span><span class="lbl">${area}</span>`;
+            interestsCt.appendChild(thread);
         });
+    }
+
+    // ── Per-page rendering ───────────────────────────────────────────────
+    if (document.getElementById('hero-name')) renderHero(data.profile);
+    if (document.getElementById('home-news')) renderNews(data.news);
+    if (document.getElementById('education-list')) renderEducation(data.education);
+    if (document.getElementById('experience-research')) renderExperienceSection('research', data.experience.research, false);
+    if (document.getElementById('experience-industry')) renderExperienceSection('industry', data.experience.industry, false);
+    if (document.getElementById('experience-voluntary')) renderExperienceSection('voluntary', data.experience.voluntary, false);
+    if (document.getElementById('home-meta')) renderSkills(data.skills);
+    if (document.getElementById('publications-list')) renderPublications(data.publications);
+    if (document.getElementById('projects-grid')) renderProjects(data.projects);
+    if (document.getElementById('talks-grid')) renderTalks(data.talks);
+    if (document.getElementById('social-links')) renderFooter(data.contact);
+
+    // ────────────────────────────────────────────────────────────────────
+    function renderHero(profile) {
+        const heroName = document.getElementById('hero-name');
+        if (heroName) heroName.textContent = profile.name;
+
+        const heroBio = document.getElementById('hero-bio');
+        if (heroBio) heroBio.innerHTML = renderRichText(profile.about_home);
+
+        const bioFull = document.getElementById('bio-full');
+        if (bioFull) bioFull.innerHTML = renderRichText(profile.bio);
+
+        document.querySelectorAll('#profile-image').forEach(img => { img.src = profile.image; });
+    }
+
+    // Renders a mix of paragraph strings and inline media items ({ image, alt }).
+    function renderRichText(items) {
+        if (!items) return '';
+        return items.map(item => {
+            if (item && typeof item === 'object' && item.image) {
+                return `<img src="${item.image}" alt="${item.alt || ''}" class="bio-media" loading="lazy">`;
+            }
+            return `<p>${item}</p>`;
+        }).join('');
+    }
+
+    function renderNews(news) {
+        const ct = document.getElementById('home-news');
+        if (!ct || !news) return;
+        const ul = document.createElement('ul');
+        ul.className = 'news-list';
+        news.slice(0, 5).forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = `<span class="ndate">${item.date}</span><span class="ncontent">${item.content}</span>`;
+            ul.appendChild(li);
+        });
+        ct.appendChild(ul);
     }
 
     function renderEducation(eduList) {
-        const container = document.getElementById('education-list');
-        const modal = document.getElementById('edu-modal');
-        const modalBody = document.getElementById('modal-body');
-        const closeModal = document.querySelector('.close-modal');
-
-        closeModal.onclick = () => modal.style.display = 'none';
-        window.onclick = (event) => {
-            if (event.target == modal) modal.style.display = 'none';
-        }
-
+        const ct = document.getElementById('education-list');
+        if (!ct) return;
         eduList.forEach(edu => {
-            const card = document.createElement('div');
-            card.className = 'edu-card-small';
-            card.innerHTML = `
-                <div>
-                   <h3 style="font-size:1.1rem; color:var(--text-primary); margin-bottom:5px;">${edu.degree}</h3>
-                   <div style="font-family:var(--font-mono); font-size:0.85rem; color:var(--accent); margin-bottom:10px;">${edu.institution}</div>
-                   <div class="card-subtitle">${edu.period}</div>
-                </div>
-                <div class="edu-click-hint">Click for details...</div>
+            const item = document.createElement('div');
+            item.className = 'edu-item';
+            item.setAttribute('tabindex', '0');
+
+            // Build coursework HTML
+            let cwHTML = '';
+            if (edu.coursework) {
+                if (typeof edu.coursework === 'object' && !Array.isArray(edu.coursework)) {
+                    cwHTML = Object.entries(edu.coursework)
+                        .map(([cat, courses]) => `<dt>${cat}</dt><dd>${courses}</dd>`)
+                        .join('');
+                } else {
+                    cwHTML = `<dd>${edu.coursework}</dd>`;
+                }
+            }
+
+            item.innerHTML = `
+                <span class="when">${edu.period}</span>
+                <strong>${edu.degree}</strong>
+                <em>${edu.institution}</em>
+                ${edu.grade ? `<span class="grade">${edu.grade}</span>` : ''}
+                ${cwHTML ? `<dl class="edu-courses"><dt style="color:var(--muted);font-size:12px;margin-bottom:4px;">Key Coursework</dt>${cwHTML}</dl>` : ''}
             `;
-
-            card.addEventListener('click', () => {
-                modalBody.innerHTML = `
-                    <h2 class="section-title" style="margin-bottom:20px; font-size:1.5rem;">${edu.degree}</h2>
-                    <h3 class="highlight">${edu.institution}</h3>
-                    <p style="margin-top:5px; font-family:var(--font-mono);">${edu.period} • ${edu.grade || edu.status}</p>
-                    <hr style="border:0; border-top:1px dashed var(--text-secondary); margin:20px 0; opacity:0.3;">
-                    <h4 style="margin-bottom:10px;">Coursework</h4>
-                    ${typeof edu.coursework === 'object' && edu.coursework !== null && !Array.isArray(edu.coursework)
-                        ? Object.entries(edu.coursework).map(([category, courses]) => `
-                            <div style="margin-bottom: 12px;">
-                                <h5 style="font-size: 0.95rem; color: var(--text-primary); margin-bottom: 4px; font-weight: 600;">${category}</h5>
-                                <p style="color:var(--text-secondary); line-height:1.6; font-size: 0.9rem; margin: 0;">${courses}</p>
-                            </div>
-                        `).join('')
-                        : `<p style="color:var(--text-secondary); line-height:1.8;">${edu.coursework}</p>`
-                    }
-                `;
-                modal.style.display = 'flex';
-            });
-
-            container.appendChild(card);
+            ct.appendChild(item);
         });
     }
 
-    function renderExperience(experience) {
-        const container = document.getElementById('experience-content');
-        const tabs = document.querySelectorAll('.tab-btn[data-tab]');
+    function renderExperienceSection(type, list, _unused) {
+        const ct = document.getElementById(`experience-${type}`);
+        if (!ct || !list) return;
+        list.forEach(exp => {
+            const item = document.createElement('div');
+            item.className = 'item';
 
-        renderExpList('research');
+            const meta = [];
+            if (exp.advisors) meta.push('Advisor(s): ' + exp.advisors.map(a => `<a href="${a.link}" target="_blank">${a.name}</a>`).join(', '));
+            if (exp.team) meta.push(exp.team);
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                renderExpList(tab.dataset.tab);
-            });
-        });
+            let desc = '';
+            if (exp.work && Array.isArray(exp.work)) {
+                desc = `<ul>${exp.work.map(w => `<li>${w}</li>`).join('')}</ul>`;
+            } else if (exp.description) {
+                desc = `<p style="margin:6px 0 0;">${exp.description}</p>`;
+            }
 
-        function renderExpList(type) {
-            container.innerHTML = '';
-            const list = experience[type];
-            if (!list) return;
-
-            list.forEach(exp => {
-                const item = document.createElement('div');
-                item.className = 'card exp-item';
-                item.style.marginBottom = '20px';
-
-                let advisorsHTML = '';
-                if (exp.advisors) {
-                    advisorsHTML = '<div class="card-subtitle">Advisor(s): ' +
-                        exp.advisors.map(adv => `<a href="${adv.link}" target="_blank" class="highlight">${adv.name}</a>`).join(', ') +
-                        '</div>';
-                }
-
-                let descHTML = '';
-                if (exp.work) {
-                    descHTML = `<ul style="margin-left:20px; list-style-type:disc; color:var(--text-secondary);">${exp.work.map(w => `<li style="margin-bottom:5px;">${w}</li>`).join('')}</ul>`;
-                } else if (exp.description) {
-                    descHTML = `<p>${exp.description}</p>`;
-                }
-
-                item.innerHTML = `
-                    <div class="card-header">
-                        <h3 class="card-title">${exp.title}</h3>
-                        <span class="card-subtitle">${exp.period}</span>
+            let roles = '';
+            if (exp.roles && Array.isArray(exp.roles)) {
+                roles = `<div style="margin:10px 0 0 18px;">${exp.roles.map(r => `
+                    <div style="margin-bottom:10px;">
+                        <span class="when">${r.period}</span>
+                        <strong style="font-size:14.5px;">${r.title}</strong>
+                        ${r.team ? `<br><em style="font-size:13.5px;">${r.team}</em>` : ''}
+                        ${r.description ? `<p style="margin:4px 0 0;font-size:14px;">${r.description}</p>` : ''}
                     </div>
-                    ${advisorsHTML}
-                    ${exp.team ? `<div class="card-subtitle">${exp.team}</div>` : ''}
-                    <br>
-                    ${descHTML}
-                `;
-                container.appendChild(item);
-            });
-        }
+                `).join('')}</div>`;
+            }
+
+            item.innerHTML = `
+                <span class="when">${exp.period}</span>
+                <strong>${exp.title}</strong>
+                ${meta.length ? `<br><em style="font-size:14px;">${meta.join(' · ')}</em>` : ''}
+                ${desc}
+                ${roles}
+            `;
+            ct.appendChild(item);
+        });
     }
 
     function renderSkills(skills) {
-        const container = document.getElementById('skills-grid');
-        for (const [category, items] of Object.entries(skills)) {
-            const catDiv = document.createElement('div');
-            catDiv.className = 'skill-category';
-            const catName = category.replace(/_/g, ' ');
-
-            const chipsHTML = items.map(skill => `
-                <span class="skill-chip-small">${skill.name}</span>
-            `).join('');
-
-            catDiv.innerHTML = `
-                <h3 style="text-transform:capitalize;">${catName}</h3>
-                <div class="skill-box">
-                    ${chipsHTML}
-                </div>
-            `;
-            container.appendChild(catDiv);
+        const ct = document.getElementById('home-meta');
+        if (!ct) return;
+        const block = document.createElement('div');
+        block.className = 'skills-block';
+        for (const [cat, items] of Object.entries(skills)) {
+            const catName = cat.replace(/_/g, ' ');
+            const names = items.map(s => s.name).join(', ');
+            const row = document.createElement('div');
+            row.className = 'skill-cat';
+            row.innerHTML = `<strong>${catName}:</strong> <span>${names}</span>`;
+            block.appendChild(row);
         }
+        ct.appendChild(block);
     }
 
     function renderPublications(pubs) {
-        const container = document.getElementById('publications-list');
-        const pubTabs = document.querySelectorAll('.tab-btn[data-pub-tab]');
-
-        const categories = { 'Journal': [], 'Conference': [], 'Preprint': [], 'Patent': [] };
-        pubs.forEach(p => {
-            let cat = 'Other';
-            if (p.type && p.type.includes('PATENT')) cat = 'Patent';
-            else if (p.type && p.type.includes('JOURNAL')) cat = 'Journal';
-            else if (p.type && p.type.includes('CONFERENCE')) cat = 'Conference';
-            else if (p.type && p.type.includes('PREPRINT')) cat = 'Preprint';
-
-            if (categories[cat]) categories[cat].push(p);
+        const ct = document.getElementById('publications-list');
+        if (!ct) return;
+        const ol = document.createElement('ol');
+        ol.className = 'pub-list';
+        pubs.forEach(pub => {
+            const li = document.createElement('li');
+            li.className = 'pub-item';
+            // Bold the author "Kunal Kumar Sahoo"
+            const authors = pub.authors.replace(/Kunal Kumar Sahoo/g, '<strong>Kunal Kumar Sahoo</strong>');
+            const titleTag = pub.link
+                ? `<a href="${pub.link}" target="_blank">${pub.title}</a>`
+                : `<span>${pub.title}</span>`;
+            li.innerHTML = `<div class="pub-body">
+                ${titleTag}. ${authors}.
+                ${pub.venue ? `<span class="pub-venue"><em>${pub.venue}</em>.</span>` : ''}
+            </div>`;
+            ol.appendChild(li);
         });
-
-        pubTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                pubTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                renderPubList(tab.dataset.pubTab);
-            });
-        });
-
-        function renderPubList(category) {
-            container.innerHTML = '';
-            const items = categories[category];
-            if (!items || items.length === 0) {
-                container.innerHTML = '<p class="text-center" style="opacity:0.6;">No items found.</p>';
-                return;
-            }
-
-            items.forEach(pub => {
-                const item = document.createElement('div');
-                item.className = 'pub-item';
-                item.innerHTML = `
-                    <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-                        <a href="${pub.link || '#'}" target="_blank" style="font-size:1.1rem; font-weight:700;">${pub.title}</a>
-                        <span style="font-family:var(--font-mono); font-size:0.8rem; color:var(--accent);">${pub.type}</span>
-                    </div>
-                    <p style="margin-top:5px; font-size:0.95rem;">${pub.authors}</p>
-                    ${pub.venue ? `<p style="font-size:0.85rem; color: var(--text-secondary);">${pub.venue}</p>` : ''}
-                    ${pub.id ? `<p style="font-size:0.85rem; color: var(--text-secondary);">${pub.id}</p>` : ''}
-                `;
-                container.appendChild(item);
-            });
-        }
-
-        renderPubList('Journal');
+        ct.appendChild(ol);
     }
 
     function renderProjects(projects) {
-        const container = document.getElementById('projects-grid');
+        const ct = document.getElementById('projects-grid');
+        if (!ct) return;
         projects.forEach(proj => {
-            const card = document.createElement('div');
-            card.className = 'project-card';
-            const techs = proj.tech ? proj.tech.split(',').map(t => t.trim()) : [];
-            card.innerHTML = `
-                <div class="project-img-wrapper">
-                    <img src="${proj.img}" alt="${proj.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x200?text=Project'">
+            const row = document.createElement('div');
+            row.className = 'media-row';
+            row.innerHTML = `
+                <div class="thumb">
+                    <img src="${proj.img}" alt="${proj.title}" loading="lazy"
+                         onerror="this.parentElement.style.display='none'">
                 </div>
-                <div class="project-content">
-                    <h3 class="card-title">${proj.title}</h3>
-                    <p style="font-size:0.95rem; margin-bottom:15px;">${proj.desc}</p>
-                    <div class="project-tech-stack">
-                        ${techs.map(t => `<span>${t}</span>`).join(' • ')}
-                    </div>
-                </div>
-            `;
-            container.appendChild(card);
+                <div class="body">
+                    <h3>${proj.title}</h3>
+                    <p>${proj.desc}</p>
+                    <span class="tech">${proj.tech || ''}</span>
+                </div>`;
+            ct.appendChild(row);
         });
     }
 
     function renderTalks(talks) {
-        const container = document.getElementById('talks-grid');
+        const ct = document.getElementById('talks-grid');
+        if (!ct) return;
         talks.forEach(talk => {
-            const card = document.createElement('div');
-            card.className = 'project-card';
-            card.innerHTML = `
-                <div class="project-img-wrapper">
-                    <img src="${talk.img}" alt="${talk.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x200?text=Talk'">
+            const row = document.createElement('div');
+            row.className = 'media-row';
+            row.innerHTML = `
+                <div class="thumb">
+                    <img src="${talk.img}" alt="${talk.title}" loading="lazy"
+                         onerror="this.parentElement.style.display='none'">
                 </div>
-                <div class="project-content">
-                    <h3 class="card-title" style="font-size:1.1rem;">${talk.title}</h3>
-                    <p style="font-size:0.95rem;">${talk.desc}</p>
-                    <div style="margin-top:auto; font-weight:700; color:var(--accent);">${talk.date}</div>
-                </div>
-            `;
-            container.appendChild(card);
+                <div class="body">
+                    <span class="when">${talk.date}</span>
+                    <h3>${talk.title.replace(/\\n/g, ' ')}</h3>
+                    <p>${talk.desc}</p>
+                </div>`;
+            ct.appendChild(row);
         });
     }
 
     function renderFooter(contact) {
-        document.getElementById('contact-email').textContent = contact.email;
-        document.getElementById('contact-email').href = `mailto:${contact.email}`;
-
-        const socialContainer = document.getElementById('social-links');
-        contact.socials.forEach(soc => {
-            const link = document.createElement('a');
-            link.className = 'social-icon';
-            link.href = soc.link;
-            link.target = '_blank';
-
-            if (soc.name === 'X') {
-                link.innerHTML = '<i class="devicon-twitter-original"></i>';
-            } else if (soc.name === 'Blog') {
-                if (soc.icon) link.innerHTML = `<i class="${soc.icon}"></i>`;
-                else link.innerHTML = '<span>Blog</span>';
-            } else if (soc.icon) {
-                link.innerHTML = `<i class="${soc.icon}"></i>`;
-            } else {
-                link.textContent = soc.name;
-            }
-
-            link.setAttribute('aria-label', soc.name);
-            socialContainer.appendChild(link);
-        });
+        const emailEl = document.getElementById('contact-email');
+        if (emailEl) {
+            emailEl.textContent = contact.email;
+            emailEl.href = `mailto:${contact.email}`;
+        }
+        const socCt = document.getElementById('social-links');
+        if (socCt) {
+            contact.socials.forEach(soc => {
+                const a = document.createElement('a');
+                a.href = soc.link;
+                a.target = '_blank';
+                a.textContent = soc.name;
+                socCt.appendChild(a);
+            });
+        }
     }
 });
