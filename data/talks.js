@@ -1,6 +1,18 @@
 window.portfolioData = Object.assign(window.portfolioData || {}, {
     "talks": [
         {
+            "title": "What if Vision had Time Stone?",
+            "desc": "An in-depth survey on world models right from neuroscience conceptualization to modern-day paradigms like JEPA, Cosmos, etc. along with their applications in areas like generative modeling, robot controls, etc.",
+            "img": "media/world-models-survey.png",
+            "date": "September 2026"
+        },
+        {
+            "title": "Flow Matching for Generative Modeling\n - Paper Reading Club ft. AI Collective 2026, IIIT Delhi",
+            "desc": "Gave a tutorial session on Flow Matching by Lipman et al., where I started from intial conceptualization from transformation of distribution to final conditional flow matching loss. Later we also discussed how Diffusion can be thought of as a special case of Flow Matching, and some recent use-cases of Flow Matching apart from image generation.",
+            "img": "media/flow-matching.jpeg",
+            "date": "September 2026"
+        },
+        {
             "title": "Grounding in Agentic Systems \n - Paper Reading Club ft. AI Collective 2026, IIIT Delhi",
             "desc": "ReflAct (Kim et al., 2025) improves LLM agents by grounding each action in the current state and remaining goal, rather than relying on free-form reasoning alone.",
             "img": "media/IMG_20260808_143059.jpg",
