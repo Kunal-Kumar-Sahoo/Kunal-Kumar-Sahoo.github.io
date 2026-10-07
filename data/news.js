@@ -1,5 +1,6 @@
 window.portfolioData = Object.assign(window.portfolioData || {}, {
     "news": [
+        { "date": "Oct 2026", "content": "Paper <em>Fulcrum</em> accepted at <b>ACM Middleware 2026</b>." },
         { "date": "Jun 2026", "content": "Paper <em>Pagoda</em> accepted at <b>ICPP 2026</b> (International Conference on Parallel Processing)." },
         { "date": "Jun 2026", "content": "Received the <b>IndiaAI PhD Fellowship</b> by the MEITy, Govt. of India." },
         { "date": "Jul 2025", "content": "Started my <b>PhD</b> at the Yardi School of Artificial Intelligence, IIT Delhi." },
