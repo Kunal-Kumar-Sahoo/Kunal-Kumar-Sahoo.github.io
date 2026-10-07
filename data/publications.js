@@ -14,7 +14,7 @@ window.portfolioData = Object.assign(window.portfolioData || {}, {
             "type": "CONFERENCE",
             "category": "Conference",
             "authors": "Prashanthi S. K., Saisamarth Taluri, Amartya Ranjan Saikia, Pranav Gupta, Kunal Kumar Sahoo, Atharva Vinay Joshi, Lakshya Karwa, Kedar Dhule, Yogesh Simmhan",
-            "venue": "ACM/IFIP International Middleware Conference (Under Review)"
+            "venue": "ACM/IFIP International Middleware Conference 2026"
         },
         {
             "title": "Time and Energy Rooflines for DNN Workloads",
