@@ -2,9 +2,9 @@ window.portfolioData = Object.assign(window.portfolioData || {}, {
     "talks": [
         {
             "title": "Don't Stream Your Tokens Into A Servo — DevFest Noida 2026, Noida",
-            "desc": "A position talk on why VLMs and VLAs generalise to open-set tasks yet still fall short as robots, covering five gaps (grounding, physics, drift, latency, trust) and a workaround for each.",
-            "img": "media/world-models-survey.png",
-            "date": "September 2026"
+            "desc": "A position talk on why VLMs and VLAs generalize to open-set tasks yet still fall short as robots, covering important gaps and a <b>jugaads</b> for each.",
+            "img": "media/IMG_7105.JPG",
+            "date": "October 2026"
         },
         {
             "title": "What if Vision had Time Stone? — DAIR Reading Group, IIT Delhi",
