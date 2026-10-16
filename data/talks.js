@@ -1,6 +1,12 @@
 window.portfolioData = Object.assign(window.portfolioData || {}, {
     "talks": [
         {
+            "title": "Don't Stream Your Tokens Into A Servo — DevFest Noida 2026, Noida",
+            "desc": "A position talk on why VLMs and VLAs generalise to open-set tasks yet still fall short as robots, covering five gaps (grounding, physics, drift, latency, trust) and a workaround for each.",
+            "img": "media/world-models-survey.png",
+            "date": "September 2026"
+        },
+        {
             "title": "What if Vision had Time Stone? — DAIR Reading Group, IIT Delhi",
             "desc": "An in-depth survey on world models right from neuroscience conceptualization to modern-day paradigms like JEPA, Cosmos, etc. along with their applications in areas like generative modeling, robot controls, etc.",
             "img": "media/world-models-survey.png",
